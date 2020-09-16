@@ -31,7 +31,7 @@ This codebase uses tensor matrices to represent molecules. Each molecule is desc
 
 
 
-# Batch representations
+## Batch representations
 
 This codes deals with molecules in batches. An extra dimension is added to all of the four tensors at the first index. Their respective sizes become:
 
