@@ -39,7 +39,7 @@ from . import auxiliary_functions_neural_graph_convolutions as afngf
 
 
 class RationalLayer(tf.keras.layers.Layer):
-    """Rational Activation function (originally implemented by Nicolas Boulle at ahttps://github.com/NBoulle/RationalNets and slightly adapted by Markus Dablander).
+    """Rational Activation function (originally implemented by Nicolas Boulle at https://github.com/NBoulle/RationalNets and slightly adapted by Markus Dablander).
     Rational Function as Activation Function:
     `f(x) = P(x) / Q(x),
     where the coefficients of P and Q are learned array with the same shape as x.
@@ -162,7 +162,8 @@ class RationalLayer(tf.keras.layers.Layer):
 class RationalNeuralFingerprintOutput(tf.keras.layers.Layer):
     """
     Output layer in a neural graph convolution.
-    Similar to Duvenaud et. al., 2015, but with an additional hidden layer, optionally with trainable rationl activation functions). 
+    Similar to Duvenaud et. al., 2015, but with an additional hidden layer, per default with trainable rational activation functions.
+    If use_rational_hidden_activation = True, then trainable rational activation functions are used, otherwise "hidden_activation" is used.
     This layer takes a graph as an input. The graph is represented as by four tensors.
     
     - The atoms tensor represents the features of the nodes.
@@ -311,9 +312,9 @@ class RationalNeuralFingerprintOutput(tf.keras.layers.Layer):
 
 class DeepRationalNeuralFingerprintHidden(tf.keras.layers.Layer):
     """
-    Hidden layer in a neural graph convolution (as in Duvenaud et. al.,
-    2015). This layer takes a graph as an input. The graph is represented as by
-    four tensors.
+    Hidden layer in a neural graph convolution. This layer takes a graph as an input. The graph is represented as by
+    four tensors. Similar to Duvenaud et. al., 2015, but with 5 layers, per default with trainable rational activation functions.
+    If use_rational_activation = True, then trainable rational activation functions are used, otherwise "activation" is used.
     
     - The atoms tensor represents the features of the nodes.
     - The bonds tensor represents the features of the edges.
