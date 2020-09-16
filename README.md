@@ -46,9 +46,9 @@ As molecules have different numbers of atoms, max_atoms needs to be defined for 
 
 The relevant tf.keras layers are defined in tf_keras_layers_rational_neural_graph_convolutions.
 
-DeepRationalNeuralGraphHidden takes a set of molecules (represented by [atoms, bonds, edges, atoms_existence]), and returns the convolved feature vectors of the higher layers by applying a rational neural network with 5 hidden layers and trainable rational activation functions. Only the feature vectors change at each iteration, so for higher layers only the atom tensor needs to be replaced by the convolved output of the previous NeuralGraphHidden.
+- DeepRationalNeuralGraphHidden takes a set of molecules (represented by [atoms, bonds, edges, atoms_existence]), and returns the convolved feature vectors of the higher layers by applying a rational neural network with 5 hidden layers and trainable rational activation functions. Only the feature vectors change at each iteration, so for higher layers only the atom tensor needs to be replaced by the convolved output of the previous NeuralGraphHidden.
 
-NeuralGraphOutput takes a set of molecules (represented by [atoms, bonds, edges, atoms_existence]), and returns the fingerprint output for that layer by applying a shallow rational neural network with 1 hidden layer with trainable rational activation functions and a softmax output layer. According to the original paper, the fingerprints of all layers need to be summed. But these are neural nets, so feel free to play around with the architectures!
+- NeuralGraphOutput takes a set of molecules (represented by [atoms, bonds, edges, atoms_existence]), and returns the fingerprint output for that layer by applying a shallow rational neural network with 1 hidden layer with trainable rational activation functions and a softmax output layer. According to the original paper, the fingerprints of all layers need to be summed. But these are neural nets, so feel free to play around with the architectures!
 
 # Why the atoms_existence tensor?
 
@@ -62,7 +62,7 @@ atoms associated with a zero feature vector (which can theoretically happen afte
 - numpy 1.19.1 
 - pandas 1.1.1.
 
-# Acknowledgements and Final Remarks
+# Acknowledgements
 
 The tf.keras layer RationalLayer was implemented by and taken from the Github profile of Nicolas Boulle:
 
@@ -72,4 +72,4 @@ The implementation of both neural fingerprint layers is inspired by (but differe
 
     - https://github.com/keiserlab/keras-neural-graph-fingerprint/blob/master/NGF/layers.py.
 
-The scripts auxiliary_functions_atom_bond_features, auxiliary_functions_graph_tensorion and auxiliary_functions_neural_graph_convolutions contain useful auxiliary functions which were taken from the keiser-lab implementation with only minor changes.
+The scripts auxiliary_functions_atom_bond_features, auxiliary_functions_graph_tensorion and auxiliary_functions_neural_graph_convolutions contain useful auxiliary functions which were also taken from the keiser-lab implementation with only minor changes.
