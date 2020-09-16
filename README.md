@@ -23,11 +23,11 @@ This implementation operates within the graph tensorisation framework which was 
 
 This codebase uses tensor matrices to represent molecules. Each molecule is described by a combination of the following four tensors:
 
-- atom matrix, size: (max_atoms, num_atom_features) This matrix defines the atom features. Each column in the atom matrix represents the feature vector for the atom at the index of that column.
+- atom matrix, size: (max_atoms, num_atom_features). This matrix defines the atom features. Each column in the atom matrix represents the feature vector for the atom at the index of that column.
 
-- edge matrix, size: (max_atoms, max_degree) This matrix defines the connectivity between atoms. Each column in the edge matrix represent the neighbours of an atom. The neighbours are encoded by an integer representing the index of their feature vector in the atom matrix. As atoms can have a variable number of neighbours, not all rows will have a neighbour index defined. These entries are filled with the masking value of -1. (This explicit edge matrix masking value is important for the layers to work)
+- edge matrix, size: (max_atoms, max_degree). This matrix defines the connectivity between atoms. Each column in the edge matrix represent the neighbours of an atom. The neighbours are encoded by an integer representing the index of their feature vector in the atom matrix. As atoms can have a variable number of neighbours, not all rows will have a neighbour index defined. These entries are filled with the masking value of -1. (This explicit edge matrix masking value is important for the layers to work)
 
-- bond tensor size: (max_atoms, max_degree, num_bond_features) This matrix defines the atom features. The first two dimensions of this tensor represent the bonds defined in the edge tensor. The column in the bond tensor at the position of the bond index in the edge tensor defines the features of that bond. Bonds that are unused are masked with 0 vectors.
+- bond tensor size: (max_atoms, max_degree, num_bond_features). This matrix defines the atom features. The first two dimensions of this tensor represent the bonds defined in the edge tensor. The column in the bond tensor at the position of the bond index in the edge tensor defines the features of that bond. Bonds that are unused are masked with 0 vectors.
     
 - atoms existence, size (max_atoms,). This binary 1d array indicates the number of atoms of a molecule. If a molecule has (say) 2 atoms, the array is (1,1,0,...,0).
 
