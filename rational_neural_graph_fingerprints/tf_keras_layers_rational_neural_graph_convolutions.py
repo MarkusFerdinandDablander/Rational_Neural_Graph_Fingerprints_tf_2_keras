@@ -323,7 +323,7 @@ class DeepRationalNeuralFingerprintHidden(tf.keras.layers.Layer):
     
     It returns a tensor containing the updated atom feature vectors for each molecule.
     
-    Input: (atoms, bonds, edges)
+    Input: (atoms, bonds, edges, atoms_existence)
     
     - atoms: shape = (num_molecules, max_atoms, num_atom_features))
     - bonds: shape = (num_molecules, max_atoms, max_degree, num_bond_features))
