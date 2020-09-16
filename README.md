@@ -6,7 +6,7 @@ The script tf_keras_layers_rational_neural_graph_convolutions offers the followi
 
 - RationalLayer: A layer of trainable rational activation functions (implemented by and taken from Nicolas Boulle, see https://github.com/NBoulle/RationalNets and https://arxiv.org/abs/2004.01902,).
 
-- DeepRationalNeuralFingerprintHidden: Takes the place of the operation of the hidden graph convolution in Duvenauds algorithm (see matrices H in paper), but is now a deep neural network with 5 layers with trainable rational activation functions. Contrary to the original technique of Duvenaud, we only use one such layer for all atom degrees instead of one such layer per atom degree. Numerical experimens have shown that like this we can reach equal performance with a drastically reduced number of parameters and simpler implementation.
+- DeepRationalNeuralFingerprintHidden: Takes the place of the operation of the hidden graph convolution in Duvenauds algorithm (see matrices H in paper), but is now a deep neural network with 5 layers with trainable rational activation functions. Contrary to the original technique of Duvenaud, we only use one such layer for all atom degrees instead of one such layer per atom degree. Numerical experiments have shown that like this we can reach equal performance with a drastically reduced number of parameters and simpler implementation.
 
 - RationalNeuralFingerprintOutput: Takes the place of the operation of the readout convolution in Duvenauds algorithm (see matrices W in paper), but is now a shallow neural network with 1 hidden layer with a trainable activation function and (as default) a softmax output function.
 
@@ -65,8 +65,9 @@ atoms associated with a zero feature vector (which can theoretically happen afte
 
 # Dependencies
 
-- tensorflow 2.2.0
-- rdkit 2020.03.3.0 numpy 1.19.1 
+- tensorflow >= 2.0
+- rdkit 2020.03.3.0 
+- numpy 1.19.1 
 - pandas 1.1.1.
 
 # Acknowledgements and Final Remarks
