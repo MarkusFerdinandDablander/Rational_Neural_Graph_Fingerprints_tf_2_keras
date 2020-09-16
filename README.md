@@ -4,7 +4,7 @@ This package contains an implementation of three tf.keras layers (tensorflow >= 
 
 The script tf_keras_layers_rational_neural_graph_convolutions offers the following three tf.keras layer classes (child classes of tf.keras.layers.layer):
 
-- RationalLayer: A layer of trainable rational activation functions (implemented by and taken from Nicolas Boulle, see https://github.com/NBoulle/RationalNets and https://arxiv.org/abs/2004.01902,).
+- RationalLayer: A layer of trainable rational activation functions (implemented by and taken from Nicolas Boulle, see https://github.com/NBoulle/RationalNets and https://arxiv.org/abs/2004.01902).
 
 - DeepRationalNeuralFingerprintHidden: Takes the place of the operation of the hidden graph convolution in Duvenauds algorithm (see matrices H in paper), but is now a deep neural network with 5 layers with trainable rational activation functions. Contrary to the original technique of Duvenaud, we only use one such layer for all atom degrees instead of one such layer per atom degree. Numerical experiments have shown that like this we can reach equal performance with a drastically reduced number of parameters and simpler implementation.
 
