@@ -1,4 +1,4 @@
-# Rational_Neural_Graph_Fingerprints_tf_2_keras
+# Rational Neural Graph Fingerprints in Tensorflow >=2.0 as tf.keras Layers
 
 This package contains an implementation of three tf.keras layers (tensorflow >= 2.0) which correspond to the operators necessary for computing neural graph fingerprints with trainable rational activation functions. The method is a new modification of the algorithm of Duvendaud et. al. (2015) https://arxiv.org/abs/1509.09292.
 
