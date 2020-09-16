@@ -46,7 +46,7 @@ As molecules have different numbers of atoms, max_atoms needs to be defined for 
 
 The relevant tf.keras layers are defined in tf_keras_layers_rational_neural_graph_convolutions.
 
-- DeepRationalNeuralFingerprintHidden takes a set of molecules (represented by [atoms, bonds, edges, atoms_existence]), and returns the convolved feature vectors of the higher layers by applying a rational neural network with 5 hidden layers and trainable rational activation functions. Only the feature vectors change at each iteration, so for higher layers only the atom tensor needs to be replaced by the convolved output of the previous NeuralGraphHidden.
+- DeepRationalNeuralFingerprintHidden takes a set of molecules (represented by [atoms, bonds, edges, atoms_existence]), and returns the convolved feature vectors of the higher layers by applying a rational neural network with 5 hidden layers and trainable rational activation functions. Only the feature vectors change at each iteration, so for higher layers only the atom tensor needs to be replaced by the convolved output of the previous DeepRationalNeuralFingerprintHidden.
 
 - RationalNeuralFingerprintOutput takes a set of molecules (represented by [atoms, bonds, edges, atoms_existence]), and returns the fingerprint output for that layer by applying a shallow rational neural network with 1 hidden layer with trainable rational activation functions and a softmax output layer. According to the original paper, the fingerprints of all layers need to be summed. But these are neural nets, so feel free to play around with the architectures!
 
