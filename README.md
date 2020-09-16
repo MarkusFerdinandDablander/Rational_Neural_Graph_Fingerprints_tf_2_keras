@@ -42,7 +42,7 @@ This codes deals with molecules in batches. An extra dimension is added to all o
 
 As molecules have different numbers of atoms, max_atoms needs to be defined for the entire dataset. Unused atom columns are masked by 0 vectors.
 
-# NeuralGraph layers
+# NeuralFingerprint layers
 
 The relevant tf.keras layers are defined in tf_keras_layers_rational_neural_graph_convolutions.
 
@@ -64,10 +64,12 @@ atoms associated with a zero feature vector (which can theoretically happen afte
 
 # Acknowledgements and Final Remarks
 
-The tf.keras layer RationalLayer was implemented by and taken from the Github profile of Nicolas Boulle https://github.com/NBoulle/RationalNets.
+The tf.keras layer RationalLayer was implemented by and taken from the Github profile of Nicolas Boulle:
+
+    - https://github.com/NBoulle/RationalNets.
 
 The implementation of both neural fingerprint layers is inspired by (but different from) the two tf.keras graph convolutional layer implementations which can be found in the keiser-lab implementation:
 
-    - https://github.com/keiserlab/keras-neural-graph-fingerprint/blob/master/NGF/layers.py
+    - https://github.com/keiserlab/keras-neural-graph-fingerprint/blob/master/NGF/layers.py.
 
 The scripts auxiliary_functions_atom_bond_features, auxiliary_functions_graph_tensorion and auxiliary_functions_neural_graph_convolutions contain useful auxiliary functions which were taken from the keiser-lab implementation with only minor changes.
