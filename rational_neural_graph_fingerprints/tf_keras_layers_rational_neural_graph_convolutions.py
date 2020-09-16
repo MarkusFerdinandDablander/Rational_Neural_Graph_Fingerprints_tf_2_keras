@@ -5,7 +5,7 @@ This part (i.e. PART_4 of this script) contains an implementation of two new tf.
 
 The script offers the following three tf.keras layer classes (child classes of tf.keras.layers.layer):
 
--RationalLayer: A layer of trainable rational activation functions (see https://arxiv.org/abs/2004.01902, implemented by Nicolas Boulle https://github.com/NBoulle/RationalNets).
+- RationalLayer: A layer of trainable rational activation functions (see https://arxiv.org/abs/2004.01902, implemented by Nicolas Boulle https://github.com/NBoulle/RationalNets).
 
 - DeepRationalNeuralFingerprintHidden: Takes the place of the operation of the hidden graph convolution in Duvenauds algorithm (see matrices H in paper), but is now a deep neural network 5 layers with trainable rational activation functions.
 
