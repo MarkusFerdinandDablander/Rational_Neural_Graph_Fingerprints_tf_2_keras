@@ -12,7 +12,9 @@ The script tf_keras_layers_rational_neural_graph_convolutions offers the followi
 
 The package contains an example with a simple water solubility prediction task to illustrate how to use the layers to construct a neural graph convolution.
 
-The scripts auxiliary_functions_atom_bond_features, auxiliary_functions_graph_tensorion and auxiliary_functions_neural_graph_convolutions contain auxiliary functions which were taken from the keiser-lab implementation of the Duvenaud algorithm (https://github.com/keiserlab/keras-neural-graph-fingerprint). This implementation operates within the graph tensorisation framework which was offered in the keiser-lab implementation. We thus copied parts of the readme of the keiser-lab implementation which still apply to this new implementation below.
+The scripts auxiliary_functions_atom_bond_features, auxiliary_functions_graph_tensorion and auxiliary_functions_neural_graph_convolutions contain auxiliary functions which were taken from the keiser-lab implementation of the Duvenaud algorithm (https://github.com/keiserlab/keras-neural-graph-fingerprint). 
+
+This implementation operates within the graph tensorisation framework which was offered in the keiser-lab implementation. We thus copied parts of the readme of the keiser-lab implementation which still apply to this new implementation below.
 
 
 # Molecule Representation
