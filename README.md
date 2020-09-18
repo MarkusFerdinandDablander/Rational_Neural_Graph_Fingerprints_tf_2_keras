@@ -55,7 +55,7 @@ The relevant tf.keras layers are defined in tf_keras_layers_rational_neural_grap
 # Illustration of Prototypical Graph Convolutional Architecture
 
 
-![Image of Yaktocat](https://github.com/MarkusFerdinandDablander/Rational_Neural_Graph_Fingerprints_tf_2_keras/blob/master/neural_graph_convolution_architecture.pdf)
+![Image of Yaktocat](https://github.com/MarkusFerdinandDablander/Rational_Neural_Graph_Fingerprints_tf_2_keras/blob/master/neural_graph_convolution_architecture.png)
 
 
 # Why the atoms_existence tensor?
