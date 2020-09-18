@@ -52,7 +52,7 @@ The relevant tf.keras layers are defined in tf_keras_layers_rational_neural_grap
 
 - RationalNeuralFingerprintOutput takes a set of molecules (represented by [atoms, bonds, edges, atoms_existence]), and returns the fingerprint output for that layer by applying a shallow rational neural network with 1 hidden layer with trainable rational activation functions and a softmax output layer. According to the original paper, the fingerprints of all layers need to be summed. But these are neural nets, so feel free to play around with the architectures!
 
-# Illustration of Prototypical Graph Convolutional Architecture
+# Illustration of Typical Graph Convolutional Architecture
 
 
 ![Image of Yaktocat](https://github.com/MarkusFerdinandDablander/Rational_Neural_Graph_Fingerprints_tf_2_keras/blob/master/neural_graph_convolution_architecture.svg)
