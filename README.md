@@ -57,7 +57,7 @@ The relevant tf.keras layers are defined in tf_keras_layers_rational_neural_grap
 
 ![Image of Yaktocat](https://github.com/MarkusFerdinandDablander/Rational_Neural_Graph_Fingerprints_tf_2_keras/blob/master/neural_graph_convolution_architecture.svg)
 
-Neural architecture of a molecular graph convolution. The molecule symbols at the left represent molecular graphs with attached atom- and bond feature vectors. The red arrows represent trainable neural networks while the red bars symbolize extracted feature vectors. The plus symbol indicates the summation of all extracted layerwise neural fingerprint vectors to form the global neural fingerprint for the molecular input graph.
+Neural architecture of a molecular graph convolution. The molecule symbols at the left represent molecular graphs with attached atom- and bond feature vectors. The red arrows represent trainable rational neural networks while the red bars symbolize extracted feature vectors. The plus symbol indicates the summation of all extracted layerwise neural fingerprint vectors to form the global neural fingerprint for the molecular input graph.
 
 
 # Why the atoms_existence tensor?
