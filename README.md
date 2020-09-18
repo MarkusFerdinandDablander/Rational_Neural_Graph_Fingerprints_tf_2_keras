@@ -29,7 +29,7 @@ This codebase uses tensor matrices to represent molecules. Each molecule is desc
 
 - **bond tensor**, size: (max_atoms, max_degree, num_bond_features). This matrix defines the atom features. The first two dimensions of this tensor represent the bonds defined in the edge tensor. The column in the bond tensor at the position of the bond index in the edge tensor defines the features of that bond. Bonds that are unused are masked with 0 vectors.
     
-- **atoms existence**, size (max_atoms,). This binary 1d array indicates the number of atoms of a molecule. If a molecule has (say) 2 atoms, the array is (1,1,0,...,0).
+- **atoms existence vector**, size (max_atoms,). This binary 1d array indicates the number of atoms of a molecule. If a molecule has (say) 2 atoms, the array is (1,1,0,...,0).
 
 
 
@@ -40,7 +40,7 @@ This codes deals with molecules in batches. An extra dimension is added to all o
 - **atom matrix**, size: (num_molecules, max_atoms, num_atom_features)
 - **edge matrix**, size: (num_molecules, max_atoms, max_degree)
 - **bond tensor**, size: (num_molecules, max_atoms, max_degree, num_bond_features)
-- **atoms existence**, size: (num_molecules, max_atoms)
+- **atoms existence vector**, size: (num_molecules, max_atoms)
 
 As molecules have different numbers of atoms, max_atoms needs to be defined for the entire dataset. Unused atom columns are masked by 0 vectors.
 
@@ -60,7 +60,7 @@ The relevant tf.keras layers are defined in tf_keras_layers_rational_neural_grap
 Neural architecture of a molecular graph convolution. The molecule symbols at the left represent molecular graphs with attached atom- and bond feature vectors. The red arrows represent trainable rational neural networks while the red bars symbolize extracted feature vectors. The plus symbol indicates the summation of all extracted layerwise neural fingerprint vectors to form the global neural fingerprint for the molecular input graph.
 
 
-# Why the atoms_existence tensor?
+# Why the atoms_existence vector?
 
 The additional input tensor "atoms_existence" was added to the framework to account for a subtle theoretical gap in previous implementations: 
 atoms associated with a zero feature vector (which can theoretically happen after at least one convolution) AND with degree 0 can still exist and can thus not be ignored. As an example imagine a single carbon atom as input molecule whose atom feature vector gets mapped to zero in the first convolution. The previous implementations would from this moment on treat the carbon atom as nonexistent and thus the molecule as empty.
