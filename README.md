@@ -4,11 +4,11 @@ This package contains an implementation of three tf.keras layers (tensorflow >= 
 
 The script tf_keras_layers_rational_neural_graph_convolutions offers the following three tf.keras layer classes (child classes of tf.keras.layers.layer):
 
-- RationalLayer: A layer of trainable rational activation functions (implemented by and taken from Nicolas Boulle, see https://github.com/NBoulle/RationalNets and https://arxiv.org/abs/2004.01902).
+- **RationalLayer**: A layer of trainable rational activation functions (implemented by and taken from Nicolas Boulle, see https://github.com/NBoulle/RationalNets and https://arxiv.org/abs/2004.01902).
 
-- DeepRationalNeuralFingerprintHidden: Takes the place of the operation of the hidden graph convolution in Duvenauds algorithm (see matrices H in paper), but is now a deep neural network with 5 layers with trainable rational activation functions. Contrary to the original technique of Duvenaud, we only use one such layer for all atom degrees instead of one such layer per atom degree. Numerical experiments have shown that like this we can reach equal performance with a drastically reduced number of parameters and simpler implementation.
+- **DeepRationalNeuralFingerprintHidden**: Takes the place of the operation of the hidden graph convolution in Duvenauds algorithm (see matrices H in paper), but is now a deep neural network with 5 layers with trainable rational activation functions. Contrary to the original technique of Duvenaud, we only use one such layer for all atom degrees instead of one such layer per atom degree. Numerical experiments have shown that like this we can reach equal performance with a drastically reduced number of parameters and simpler implementation.
 
-- RationalNeuralFingerprintOutput: Takes the place of the operation of the readout convolution in Duvenauds algorithm (see matrices W in paper), but is now a shallow neural network with 1 hidden layer with a trainable activation function and (as default) a softmax output function.
+- **RationalNeuralFingerprintOutput**: Takes the place of the operation of the readout convolution in Duvenauds algorithm (see matrices W in paper), but is now a shallow neural network with 1 hidden layer with a trainable activation function and (as default) a softmax output function.
 
 The package contains an example with a simple water solubility prediction task to illustrate how to use the layers to construct a neural graph convolution.
 
@@ -23,13 +23,13 @@ This implementation operates within the graph tensorisation framework which was 
 
 This codebase uses tensor matrices to represent molecules. Each molecule is described by a combination of the following four tensors:
 
-- atom matrix, size: (max_atoms, num_atom_features). This matrix defines the atom features. Each column in the atom matrix represents the feature vector for the atom at the index of that column.
+- **atom matrix**, size: (max_atoms, num_atom_features). This matrix defines the atom features. Each column in the atom matrix represents the feature vector for the atom at the index of that column.
 
-- edge matrix, size: (max_atoms, max_degree). This matrix defines the connectivity between atoms. Each column in the edge matrix represent the neighbours of an atom. The neighbours are encoded by an integer representing the index of their feature vector in the atom matrix. As atoms can have a variable number of neighbours, not all rows will have a neighbour index defined. These entries are filled with the masking value of -1. (This explicit edge matrix masking value is important for the layers to work)
+- **edge matrix**, size: (max_atoms, max_degree). This matrix defines the connectivity between atoms. Each column in the edge matrix represent the neighbours of an atom. The neighbours are encoded by an integer representing the index of their feature vector in the atom matrix. As atoms can have a variable number of neighbours, not all rows will have a neighbour index defined. These entries are filled with the masking value of -1. (This explicit edge matrix masking value is important for the layers to work)
 
-- bond tensor size: (max_atoms, max_degree, num_bond_features). This matrix defines the atom features. The first two dimensions of this tensor represent the bonds defined in the edge tensor. The column in the bond tensor at the position of the bond index in the edge tensor defines the features of that bond. Bonds that are unused are masked with 0 vectors.
+- **bond tensor**, size: (max_atoms, max_degree, num_bond_features). This matrix defines the atom features. The first two dimensions of this tensor represent the bonds defined in the edge tensor. The column in the bond tensor at the position of the bond index in the edge tensor defines the features of that bond. Bonds that are unused are masked with 0 vectors.
     
-- atoms existence, size (max_atoms,). This binary 1d array indicates the number of atoms of a molecule. If a molecule has (say) 2 atoms, the array is (1,1,0,...,0).
+- **atoms existence**, size (max_atoms,). This binary 1d array indicates the number of atoms of a molecule. If a molecule has (say) 2 atoms, the array is (1,1,0,...,0).
 
 
 
@@ -37,10 +37,10 @@ This codebase uses tensor matrices to represent molecules. Each molecule is desc
 
 This codes deals with molecules in batches. An extra dimension is added to all of the four tensors at the first index. Their respective sizes become:
 
-- atom matrix, size: (num_molecules, max_atoms, num_atom_features)
-- edge matrix, size: (num_molecules, max_atoms, max_degree)
-- bond tensor size: (num_molecules, max_atoms, max_degree, num_bond_features)
-- atoms existence size: (num_molecules, max_atoms)
+- **atom matrix**, size: (num_molecules, max_atoms, num_atom_features)
+- **edge matrix**, size: (num_molecules, max_atoms, max_degree)
+- **bond tensor**, size: (num_molecules, max_atoms, max_degree, num_bond_features)
+- **atoms existence**, size: (num_molecules, max_atoms)
 
 As molecules have different numbers of atoms, max_atoms needs to be defined for the entire dataset. Unused atom columns are masked by 0 vectors.
 
@@ -48,9 +48,9 @@ As molecules have different numbers of atoms, max_atoms needs to be defined for 
 
 The relevant tf.keras layers are defined in tf_keras_layers_rational_neural_graph_convolutions.
 
-- DeepRationalNeuralFingerprintHidden takes a set of molecules (represented by [atoms, bonds, edges, atoms_existence]), and returns the convolved feature vectors of the higher layers by applying a rational neural network with 5 hidden layers and trainable rational activation functions. Only the feature vectors change at each iteration, so for higher layers only the atom tensor needs to be replaced by the convolved output of the previous DeepRationalNeuralFingerprintHidden.
+- **DeepRationalNeuralFingerprintHidden** takes a set of molecules (represented by [atoms, bonds, edges, atoms_existence]), and returns the convolved feature vectors of the higher layers by applying a rational neural network with 5 hidden layers and trainable rational activation functions. Only the feature vectors change at each iteration, so for higher layers only the atom tensor needs to be replaced by the convolved output of the previous DeepRationalNeuralFingerprintHidden.
 
-- RationalNeuralFingerprintOutput takes a set of molecules (represented by [atoms, bonds, edges, atoms_existence]), and returns the fingerprint output for that layer by applying a shallow rational neural network with 1 hidden layer with trainable rational activation functions and a softmax output layer. According to the original paper, the fingerprints of all layers need to be summed. But these are neural nets, so feel free to play around with the architectures!
+- **RationalNeuralFingerprintOutput** takes a set of molecules (represented by [atoms, bonds, edges, atoms_existence]), and returns the fingerprint output for that layer by applying a shallow rational neural network with 1 hidden layer with trainable rational activation functions and a softmax output layer. According to the original paper, the fingerprints of all layers need to be summed. But these are neural nets, so feel free to play around with the architectures!
 
 # Illustration of Typical Graph Convolutional Architecture
 
