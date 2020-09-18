@@ -60,7 +60,7 @@ The relevant tf.keras layers are defined in tf_keras_layers_rational_neural_grap
 Neural architecture of a molecular graph convolution. The molecule symbols at the left represent molecular graphs with attached atom- and bond feature vectors. The red arrows represent trainable rational neural networks while the red bars symbolize extracted feature vectors. The plus symbol indicates the summation of all extracted layerwise neural fingerprint vectors to form the global neural fingerprint for the molecular input graph.
 
 
-# Why the atoms_existence vector?
+# Why the atoms existence vector?
 
 The additional input tensor "atoms_existence" was added to the framework to account for a subtle theoretical gap in previous implementations: 
 atoms associated with a zero feature vector (which can theoretically happen after at least one convolution) AND with degree 0 can still exist and can thus not be ignored. As an example imagine a single carbon atom as input molecule whose atom feature vector gets mapped to zero in the first convolution. The previous implementations would from this moment on treat the carbon atom as nonexistent and thus the molecule as empty.
